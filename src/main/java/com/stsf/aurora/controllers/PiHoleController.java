@@ -13,9 +13,8 @@ import java.util.Locale;
 @RequestMapping("aurora/v1/blocking")
 public class PiHoleController {
 
-    @GetMapping(path = "/disable/{disableForSeconds}")
-    public GenericResponse<String> disableBlocking(@PathVariable("disableForSeconds") Integer timeout){
-
+    @GetMapping(path = "/disable")
+    public GenericResponse<String> disableBlocking() {
 
 
         try {
@@ -32,7 +31,7 @@ public class PiHoleController {
 
                 if (line.toLowerCase(Locale.ROOT).contains("disabled")) {
                     System.out.println("[DEBUG] Disabled Blocking Successfully");
-                    return new GenericResponse<>("Blocking disabled for" + timeout);
+                    return new GenericResponse<>("Blocking disabled");
                 }
 
             }
@@ -46,17 +45,19 @@ public class PiHoleController {
             e.printStackTrace();
         }
 
+        return new GenericResponse<>("Unable to disable blocking");
+
+    }
+
+
+
+    @GetMapping("/enable")
+    public GenericResponse<String> enableBlocking() {
+
         try {
 
-            Thread.sleep(timeout * 1000);
 
-        } catch (InterruptedException e) {
-            System.out.println("[INFO] Thread sleeping Interrupted");
-            e.printStackTrace();
-        }
-
-        try {
-
+            System.out.println("[DEBUG] Blocking Request Received");
             Process p = Runtime.getRuntime().exec("pihole enable");
 
 
@@ -66,7 +67,8 @@ public class PiHoleController {
             while ((line = commandOutput.readLine()) != null) {
 
                 if (line.toLowerCase(Locale.ROOT).contains("enabled")) {
-                    System.out.println("[DEBUG] Reenabled Blocking Successfully");
+                    System.out.println("[DEBUG] Blocking Enabled Successfully");
+                    return new GenericResponse<>("Blocking enabled");
                 }
 
             }
@@ -74,12 +76,14 @@ public class PiHoleController {
             p.waitFor();
             p.destroy();
 
-        } catch (InterruptedException | IOException e) {
+
+        } catch (IOException | InterruptedException e) {
             System.out.println("Unable to execute command");
             e.printStackTrace();
         }
 
-        return new GenericResponse<>("Command Executed Successfully");
-    }
+        return new GenericResponse<>("Unable to enable blocking");
 
+
+    }
 }
