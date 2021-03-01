@@ -24,8 +24,8 @@ public class AfterInitComponent implements ApplicationListener<ContextRefreshedE
             ip = "localhost";
         }
 
-//        logger.info("Setup Complete!");
-//        logger.info("Go to " + ip + ":8080 for more information");
+    //        logger.info("Setup Complete!");
+    //        logger.info("Go to " + ip + ":8080 for more information");
         System.out.println("Yaay Setup Complete!");
         System.out.printf("Go to %s:8080 for more information!\n", getLocalIP());
 
