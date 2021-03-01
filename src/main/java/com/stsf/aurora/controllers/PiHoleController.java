@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("aurora/v1/blocking")
 public class PiHoleController {
 
-    @Autowired
-    private PiHoleCotrollService piHoleCotrollService;
+
+    private final PiHoleCotrollService piHoleCotrollService = new PiHoleCotrollService();
 
     @GetMapping(path = "/disable")
     public GenericResponse<String> disableBlocking() {
