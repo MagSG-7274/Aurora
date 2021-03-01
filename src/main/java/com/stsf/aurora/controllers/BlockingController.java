@@ -2,21 +2,21 @@ package com.stsf.aurora.controllers;
 
 
 import com.stsf.aurora.requestmodel.GenericResponse;
-import com.stsf.aurora.services.PiHoleCotrollService;
+import com.stsf.aurora.services.AdblockService;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("aurora/v1/blocking")
-public class PiHoleController {
+@RequestMapping("aurora/adblock")
+public class BlockingController {
 
 
-    private final PiHoleCotrollService piHoleCotrollService = new PiHoleCotrollService();
+    private final AdblockService adblockService = new AdblockService();
 
     @GetMapping(path = "/disable")
     public GenericResponse<String> disableBlocking() {
 
-        return piHoleCotrollService.disableBlocking();
+        return adblockService.disableBlocking();
 
     }
 
@@ -25,7 +25,7 @@ public class PiHoleController {
     @GetMapping("/enable")
     public GenericResponse<String> enableBlocking() {
 
-        return piHoleCotrollService.enableBlockingService();
+        return adblockService.enableBlockingService();
 
     }
 }

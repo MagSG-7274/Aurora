@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/aurora/v1/test")
+@RequestMapping("/aurora/test")
 public class TestController {
 
     @GetMapping(path = "/{number}")

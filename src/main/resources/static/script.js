@@ -1,5 +1,5 @@
 const onload = () => {
-    console.log("Onload triggered")
+    console.log("Onload triggered");
 }
 
 window.onload = () => {

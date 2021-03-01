@@ -50,9 +50,9 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
         System.out.println("!!!!!!!!");
         System.out.println("[NOTE] The credentials will expire upon restarting Aurora\n\n\n\n");
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ignored){}
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException ignored){}
 
         UserDetails auroraUser = User.builder()
                 .username(this.USERNAME)

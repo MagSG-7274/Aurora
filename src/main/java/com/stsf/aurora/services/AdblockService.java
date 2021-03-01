@@ -1,21 +1,23 @@
 package com.stsf.aurora.services;
 
 import com.stsf.aurora.requestmodel.GenericResponse;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
-public class PiHoleCotrollService {
+@Service
+public class AdblockService {
 
     public GenericResponse<String> enableBlockingService() {
 
         try {
 
-
             System.out.println("[DEBUG] Blocking Request Received");
-            Process p = Runtime.getRuntime().exec("pihole enable");
+            String command = "pihole enable";
+            Process p = Runtime.getRuntime().exec(command);
 
 
             BufferedReader commandOutput = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -49,7 +51,8 @@ public class PiHoleCotrollService {
 
 
             System.out.println("[DEBUG] Blocking Request Received");
-            Process p = Runtime.getRuntime().exec("pihole disable");
+            String command = "pihole disable";
+            Process p = Runtime.getRuntime().exec(command);
 
 
             BufferedReader commandOutput = new BufferedReader(new InputStreamReader(p.getInputStream()));
