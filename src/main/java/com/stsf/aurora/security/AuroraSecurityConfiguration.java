@@ -14,13 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import java.util.Random;
-import java.util.Scanner;
 
 @Configuration
 @EnableWebSecurity
 public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private String PASSSWORD;
+    private String PASSWORD;
+    private String USERNAME = "storm";
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -32,34 +32,31 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/",  "index", "/css/*", "/js/*")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
+                    .antMatchers("/*",  "index", "/css/*", "/js/*").permitAll()
+                    .anyRequest()
+                    .authenticated()
+                    .and()
+                    .httpBasic();
     }
 
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
 
-        this.PASSSWORD = generatePassword();
+        this.PASSWORD = generatePassword();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\n\n\n\n!!!!!!\nGENERATING NEW CREDENTIALS");
-        System.out.printf("USERNAME - [%s] :: PASSWORD - [%s]\n", "storm", this.PASSSWORD);
-        System.out.println("!!!!!!\n");
-        System.out.println("[NOTE] The Credentials will expire upon restarting Aurora\n\n\n");
+        System.out.println("\n\n\n!!!!!!!!\nGENERATING NEW CREDENTIALS");
+        System.out.printf("USERNAME - [%s] :: PASSWORD - [%s]\n", this.USERNAME, this.PASSWORD);
+        System.out.println("!!!!!!!!");
+        System.out.println("[NOTE] The credentials will expire upon restarting Aurora\n\n\n\n");
+
         try {
             Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        } catch (InterruptedException ignored){}
 
         UserDetails auroraUser = User.builder()
-                .username("storm")
-                .password(passwordEncoder.encode("password"))
+                .username(this.USERNAME)
+                .password(passwordEncoder.encode(this.PASSWORD))
                 .roles("AURORA")
                 .build();
 
