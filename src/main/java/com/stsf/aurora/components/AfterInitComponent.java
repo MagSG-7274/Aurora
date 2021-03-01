@@ -12,7 +12,7 @@ import java.net.UnknownHostException;
 @Component
 public class AfterInitComponent implements ApplicationListener<ContextRefreshedEvent> {
 
-    private static final Logger logger = LoggerFactory.getLogger(ContextRefreshedEvent.class);
+    //private static final Logger logger = LoggerFactory.getLogger(ContextRefreshedEvent.class);
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -24,8 +24,10 @@ public class AfterInitComponent implements ApplicationListener<ContextRefreshedE
             ip = "localhost";
         }
 
-        logger.info("Setup Complete!");
-        logger.info("Go to " + ip + ":8080 for more information");
+//        logger.info("Setup Complete!");
+//        logger.info("Go to " + ip + ":8080 for more information");
+        System.out.println("Yaay Setup Complete!");
+        System.out.printf("Go to %s:8080 for more information!\n", getLocalIP());
 
 
     }
@@ -34,10 +36,8 @@ public class AfterInitComponent implements ApplicationListener<ContextRefreshedE
 
         try {
             InetAddress address = InetAddress.getLocalHost();
-            return address.getHostAddress().toString();
-        } catch (UnknownHostException e) {
-
-        }
+            return address.getHostAddress();
+        } catch (UnknownHostException ignored) {}
 
         return "Unable to obtain IP";
     }

@@ -3,7 +3,6 @@ package com.stsf.aurora.controllers;
 
 import com.stsf.aurora.requestmodel.GenericResponse;
 import com.stsf.aurora.services.PiHoleCotrollService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 

@@ -32,7 +32,7 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/*",  "index", "/css/*", "/js/*").permitAll()
+                    .antMatchers("/*").permitAll()
                     .anyRequest()
                     .authenticated()
                     .and()
@@ -51,7 +51,7 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
         System.out.println("[NOTE] The credentials will expire upon restarting Aurora\n\n\n\n");
 
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         } catch (InterruptedException ignored){}
 
         UserDetails auroraUser = User.builder()
