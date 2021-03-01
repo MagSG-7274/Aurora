@@ -6,7 +6,7 @@ import com.stsf.aurora.services.BlacklistService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("aurora/blacklist")
+@RequestMapping("/aurora/blacklist")
 public class BlacklistController {
 
     private final BlacklistService blacklistService = new BlacklistService();
