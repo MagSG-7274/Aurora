@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("aurora/adblock")
+@RequestMapping("aurora/blocking")
 public class BlockingController {
 
 
