@@ -1,6 +1,7 @@
 package com.stsf.aurora.controllers;
 
 
+import com.stsf.aurora.requestmodel.Domain;
 import com.stsf.aurora.requestmodel.GenericResponse;
 import com.stsf.aurora.services.BlacklistService;
 import org.springframework.web.bind.annotation.*;
@@ -12,13 +13,13 @@ public class BlacklistController {
     private final BlacklistService blacklistService = new BlacklistService();
 
     @PostMapping("/add")
-    public GenericResponse<String> addBlacklist(@RequestBody String domain) {
-        return new GenericResponse<>(blacklistService.addBlacklistService(domain));
+    public GenericResponse<String> addBlacklist(@RequestBody Domain domain) {
+        return new GenericResponse<>(blacklistService.addBlacklistService(domain.getDomain()));
     }
 
     @PostMapping("/rem")
-    public GenericResponse<String> removeBlackList(@RequestBody String domain) {
-        return new GenericResponse<>(blacklistService.removeBlacklistService(domain));
+    public GenericResponse<String> removeBlackList(@RequestBody Domain domain) {
+        return new GenericResponse<>(blacklistService.removeBlacklistService(domain.getDomain()));
     }
 
 }

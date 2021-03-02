@@ -1,12 +1,13 @@
 package com.stsf.aurora.services;
 
-import com.stsf.aurora.requestmodel.GenericResponse;
+
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
+
 
 @Service
 public class BlacklistService {
@@ -34,8 +35,8 @@ public class BlacklistService {
 
                 } else if (line.toLowerCase(Locale.ROOT).contains("already exists")) {
 
-                    System.out.println("[DEBUG] Blocklist already contains domain: " + domain);
-                    return "[DEBUG] Blocklist already contains domain: " + domain;
+                    System.out.println("[DEBUG] Blacklist already contains domain: " + domain);
+                    return "[DEBUG] Blacklist already contains domain: " + domain;
 
                 }
 
