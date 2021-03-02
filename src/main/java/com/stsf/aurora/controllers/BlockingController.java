@@ -2,7 +2,7 @@ package com.stsf.aurora.controllers;
 
 
 import com.stsf.aurora.requestmodel.GenericResponse;
-import com.stsf.aurora.services.AdblockService;
+import com.stsf.aurora.services.BlockingService;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 public class BlockingController {
 
 
-    private final AdblockService adblockService = new AdblockService();
+    private final BlockingService blockingService = new BlockingService();
 
     @GetMapping(path = "/disable")
     public GenericResponse<String> disableBlocking() {
 
-        return adblockService.disableBlocking();
+        return blockingService.disableBlocking();
 
     }
 
@@ -25,7 +25,7 @@ public class BlockingController {
     @GetMapping("/enable")
     public GenericResponse<String> enableBlocking() {
 
-        return adblockService.enableBlockingService();
+        return blockingService.enableBlockingService();
 
     }
 }

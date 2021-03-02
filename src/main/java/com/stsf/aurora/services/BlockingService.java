@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 @Service
-public class AdblockService {
+public class BlockingService {
 
     public GenericResponse<String> enableBlockingService() {
 

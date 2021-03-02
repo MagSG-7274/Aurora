@@ -13,12 +13,12 @@ public class BlacklistController {
 
     @PostMapping("/add")
     public GenericResponse<String> addBlacklist(@RequestBody String domain) {
-        return blacklistService.addBlacklistService(domain);
+        return new GenericResponse<>(blacklistService.addBlacklistService(domain));
     }
 
     @PostMapping("/rem")
     public GenericResponse<String> removeBlackList(@RequestBody String domain) {
-        return blacklistService.removeBlacklistService(domain);
+        return new GenericResponse<>(blacklistService.removeBlacklistService(domain));
     }
 
 }
