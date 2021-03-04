@@ -1,0 +1,10 @@
+[
+    {
+        "question": "What is Aurora?",
+        "answer": "Aurora is program created in Java to controll your PiHole"
+    },
+    {
+        "question": "Why to choose Aurora?",
+        "answer": "There is no such program to controll your PiHole, so Aurora is only one that can controll PiHole"
+    }
+]
