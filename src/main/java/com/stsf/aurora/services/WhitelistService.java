@@ -1,6 +1,6 @@
 package com.stsf.aurora.services;
 
-import com.stsf.aurora.requestmodel.GenericResponse;
+import com.stsf.aurora.requestmodel.Domain;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -98,4 +98,22 @@ public class WhitelistService {
         return "Unable to remove from whitelist";
 
     }
+
+    public Boolean getIfDomainAlreadyInWhitelistService(Domain domain) {
+
+        String output = addWhitelistService(domain.getDomain());
+
+        if (output.toLowerCase(Locale.ROOT).contains("already contains")) {
+
+            return true;
+
+        } else if (output.toLowerCase(Locale.ROOT).contains("added")) {
+
+            removeWhitelistService(domain.getDomain());
+            return false;
+
+        } else return false;
+
+    }
+
 }

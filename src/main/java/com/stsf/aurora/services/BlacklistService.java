@@ -101,7 +101,7 @@ public class BlacklistService {
 
     }
 
-    public boolean testDomain(Domain domain) {
+    public Boolean getIfDomainAlreadyInBlacklistService(Domain domain) {
 
         String output = addBlacklistService(domain.getDomain());
         if (output.toLowerCase(Locale.ROOT).contains("already contains")) {
