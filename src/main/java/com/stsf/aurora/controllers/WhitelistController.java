@@ -22,7 +22,7 @@ public class WhitelistController {
     }
 
     @GetMapping("/exists")
-    public GenericResponse<Boolean> getIfDomainAlreadyInWhitelist(@RequestBody Domain domain) {
+    public GenericResponse<Boolean> getIfDomainAlreadyInWhitelist(@RequestParam String domain) {
 
         boolean isInWhitelist = whitelistService.getIfDomainAlreadyInWhitelistService(domain);
         return new GenericResponse<>(isInWhitelist);

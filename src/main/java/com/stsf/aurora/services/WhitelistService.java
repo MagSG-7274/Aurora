@@ -99,9 +99,9 @@ public class WhitelistService {
 
     }
 
-    public Boolean getIfDomainAlreadyInWhitelistService(Domain domain) {
+    public Boolean getIfDomainAlreadyInWhitelistService(String domain) {
 
-        String output = addWhitelistService(domain.getDomain());
+        String output = addWhitelistService(domain);
 
         if (output.toLowerCase(Locale.ROOT).contains("already contains")) {
 
@@ -109,7 +109,7 @@ public class WhitelistService {
 
         } else if (output.toLowerCase(Locale.ROOT).contains("added")) {
 
-            removeWhitelistService(domain.getDomain());
+            removeWhitelistService(domain);
             return false;
 
         } else return false;

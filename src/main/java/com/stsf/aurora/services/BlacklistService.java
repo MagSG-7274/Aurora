@@ -101,16 +101,16 @@ public class BlacklistService {
 
     }
 
-    public Boolean getIfDomainAlreadyInBlacklistService(Domain domain) {
+    public Boolean getIfDomainAlreadyInBlacklistService(String domain) {
 
-        String output = addBlacklistService(domain.getDomain());
+        String output = addBlacklistService(domain);
         if (output.toLowerCase(Locale.ROOT).contains("already contains")) {
 
             return true;
 
         } else if (output.toLowerCase(Locale.ROOT).contains("added")) {
 
-            removeBlacklistService(domain.getDomain());
+            removeBlacklistService(domain);
             return false;
 
         } else return false;
