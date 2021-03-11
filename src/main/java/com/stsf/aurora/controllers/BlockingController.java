@@ -31,10 +31,10 @@ public class BlockingController {
 
 
 
-    @GetMapping("/isActive")
+    @GetMapping("/active")
     public GenericResponse<Boolean> isActive() {
 
-        return new GenericResponse<>(blockingService.isActive);
+        return blockingService.getIfBlockingIsActive();
 
     }
 }

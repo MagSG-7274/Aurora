@@ -11,14 +11,12 @@ import java.util.Locale;
 @Service
 public class BlockingService {
 
-    public boolean isActive = true;
-
 
     public GenericResponse<String> enableBlockingService() {
 
         try {
 
-            System.out.println("[DEBUG] Blocking Request Received");
+            System.out.println("[DEBUG] Blocking Enable Request Received");
             String command = "pihole enable";
             Process p = Runtime.getRuntime().exec(command);
 
@@ -38,7 +36,6 @@ public class BlockingService {
             p.waitFor();
             p.destroy();
 
-            isActive = true;
 
         } catch (IOException | InterruptedException e) {
             System.out.println("Unable to execute command");
@@ -54,7 +51,7 @@ public class BlockingService {
         try {
 
 
-            System.out.println("[DEBUG] Blocking Request Received");
+            System.out.println("[DEBUG] Blocking Disable Request Received");
             String command = "pihole disable";
             Process p = Runtime.getRuntime().exec(command);
 
@@ -75,8 +72,6 @@ public class BlockingService {
             p.destroy();
 
 
-            isActive = false;
-
         } catch (IOException | InterruptedException e) {
             System.out.println("Unable to execute command");
             e.printStackTrace();
@@ -84,6 +79,43 @@ public class BlockingService {
 
         return new GenericResponse<>("Unable to disable blocking");
 
+    }
+
+    public GenericResponse<Boolean> getIfBlockingIsActive() {
+
+        try {
+
+            System.out.println("[DEBUG] Blocking Check Request Received");
+            String command = "pihole status";
+            Process p = Runtime.getRuntime().exec(command);
+
+
+            BufferedReader commandOutput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line;
+
+            while ((line = commandOutput.readLine()) != null) {
+
+                if (line.toLowerCase(Locale.ROOT).contains("enabled")) {
+
+                    return new GenericResponse<>(true);
+
+                } else if (line.toLowerCase(Locale.ROOT).contains("disabled")) {
+
+                    return new GenericResponse<>(false);
+
+                }
+
+            }
+
+            p.waitFor();
+            p.destroy();
+
+
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Unable to execute command");
+            e.printStackTrace();
+        }
+        return new GenericResponse<>(false);
     }
 
 
