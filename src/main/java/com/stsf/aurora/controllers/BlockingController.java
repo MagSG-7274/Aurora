@@ -28,4 +28,13 @@ public class BlockingController {
         return blockingService.enableBlockingService();
 
     }
+
+
+
+    @GetMapping("/isActive")
+    public GenericResponse<Boolean> isActive() {
+
+        return new GenericResponse<>(blockingService.isActive);
+
+    }
 }

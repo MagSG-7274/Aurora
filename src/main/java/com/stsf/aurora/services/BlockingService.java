@@ -11,6 +11,9 @@ import java.util.Locale;
 @Service
 public class BlockingService {
 
+    public boolean isActive = true;
+
+
     public GenericResponse<String> enableBlockingService() {
 
         try {
@@ -35,6 +38,7 @@ public class BlockingService {
             p.waitFor();
             p.destroy();
 
+            isActive = true;
 
         } catch (IOException | InterruptedException e) {
             System.out.println("Unable to execute command");
@@ -70,6 +74,8 @@ public class BlockingService {
             p.waitFor();
             p.destroy();
 
+
+            isActive = false;
 
         } catch (IOException | InterruptedException e) {
             System.out.println("Unable to execute command");
