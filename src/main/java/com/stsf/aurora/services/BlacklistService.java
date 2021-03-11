@@ -1,6 +1,7 @@
 package com.stsf.aurora.services;
 
 
+import com.stsf.aurora.requestmodel.Domain;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -99,4 +100,21 @@ public class BlacklistService {
         return "Unable to remove from blacklist";
 
     }
+
+    public boolean testDomain(Domain domain) {
+
+        String output = addBlacklistService(domain.getDomain());
+        if (output.toLowerCase(Locale.ROOT).contains("already contains")) {
+
+            return true;
+
+        } else if (output.toLowerCase(Locale.ROOT).contains("added")) {
+
+            removeBlacklistService(domain.getDomain());
+            return false;
+
+        } else return false;
+
+    }
+
 }

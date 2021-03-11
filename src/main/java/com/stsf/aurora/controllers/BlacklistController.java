@@ -22,4 +22,15 @@ public class BlacklistController {
         return new GenericResponse<>(blacklistService.removeBlacklistService(domain.getDomain()));
     }
 
+    @GetMapping("/test")
+    public GenericResponse<String> testIfDomainAlreadyInBlacklist(@RequestBody Domain domain) {
+
+        boolean isInBlacklist = blacklistService.testDomain(domain);
+
+        if (isInBlacklist) {
+            return new GenericResponse<>("false");
+        } else return new GenericResponse<>("true");
+
+    }
+
 }
