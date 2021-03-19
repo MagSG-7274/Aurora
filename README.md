@@ -11,4 +11,14 @@ Prerequisites:
 			 - Java JRE 15 (or later)
 			-  PiHole
 ### Installing with convenience script
-- Go [here](https://github.com/MagSG-7274/Aurora/releases)
+- Go [here](https://github.com/MagSG-7274/Aurora/releases) and download it. You will need to grant this script execution privileges which you can do with `sudo chmod +x Install.sh`. 
+- Then just execute the script. `./Install.sh`
+### Downloading precompiled binaries package
+- You can run Aurora without any installation just by downloading the precompiled .jar package from [here](https://github.com/MagSG-7274/Aurora/releases) 
+- After downloading you will just need to run the package using command: `java -jar precompiledAuroraBinary.jar`
+### Compiling source code
+- First git clone the repo. `git clone https://github.com/MagSG7274/Aurora.git`
+- Grant execution privilege to gradle wrapper. `sudo chmod +x gradlew`
+- Execute gradlew with bootJar flag. `./gradlew bootJar`
+- Navigate to: *yourAuroraRoot*/build/libs
+- Execute your compiled binary with `java -jar compiledAuroraBinary.jar`
