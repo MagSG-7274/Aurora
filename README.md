@@ -7,9 +7,9 @@
 
 ## Installation
 
-Prerequisites:
-			 - Java JRE 15 (or later)
-			-  PiHole
+Prerequisites: <br>
+ - Java JRE 15 (or later) <br>
+ -  PiHole
 ### Installing with convenience script
 - Go [here](https://github.com/MagSG-7274/Aurora/releases) and download it. You will need to grant this script execution privileges which you can do with `sudo chmod +x Install.sh`. 
 - Then just execute the script. `./Install.sh`
