@@ -40,8 +40,6 @@ const loadText = () => {
     const data = JSON.parse(readTextFile("data.json"));
 
     for (const d of data) {
-        console.log(d);
-
         if (d.id == "questions") {
             loadQuestions(d.questions);
         }
