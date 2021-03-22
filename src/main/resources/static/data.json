@@ -1,0 +1,35 @@
+[
+    {
+        "id": "header-title",
+        "text": "Aurora Documentation"
+    },
+    {
+        "id": "header-text",
+        "text": "This documentation will show you how to use Aurora and it's browser extension"
+    },
+    {
+        "id": "questions",
+        "questions": [
+            {
+                "question": "What is Aurora?",
+                "answer": "Aurora is program created in Java to control your PiHole"
+            },
+            {
+                "question": "Why to choose Aurora?",
+                "answer": "There is no such program to control your PiHole, so Aurora is only one that can control PiHole"
+            },
+            {
+                "question": "Is Aurora safe?",
+                "answer": "Yes, Aurora is completely safe"
+            }
+        ]
+    },
+    {
+        "id": "copyright-text",
+        "text": "Copyright ©"
+    },
+    {
+        "id": "content-text",
+        "text": ""
+    }
+]
