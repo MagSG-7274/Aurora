@@ -16,7 +16,7 @@ public class BlockingService {
 
         try {
 
-            System.out.println("[DEBUG] Blocking Enable Request Received");
+            //System.out.println("[DEBUG] Blocking Enable Request Received");
             String command = "pihole enable";
             Process p = Runtime.getRuntime().exec(command);
 
@@ -27,7 +27,7 @@ public class BlockingService {
             while ((line = commandOutput.readLine()) != null) {
 
                 if (line.toLowerCase(Locale.ROOT).contains("enabled")) {
-                    System.out.println("[DEBUG] Blocking Enabled Successfully");
+                    //System.out.println("[DEBUG] Blocking Enabled Successfully");
                     return new GenericResponse<>("Blocking enabled");
                 }
 
@@ -51,7 +51,7 @@ public class BlockingService {
         try {
 
 
-            System.out.println("[DEBUG] Blocking Disable Request Received");
+            //System.out.println("[DEBUG] Blocking Disable Request Received");
             String command = "pihole disable";
             Process p = Runtime.getRuntime().exec(command);
 
@@ -62,7 +62,7 @@ public class BlockingService {
             while ((line = commandOutput.readLine()) != null) {
 
                 if (line.toLowerCase(Locale.ROOT).contains("disabled")) {
-                    System.out.println("[DEBUG] Disabled Blocking Successfully");
+                    //System.out.println("[DEBUG] Disabled Blocking Successfully");
                     return new GenericResponse<>("Blocking disabled");
                 }
 

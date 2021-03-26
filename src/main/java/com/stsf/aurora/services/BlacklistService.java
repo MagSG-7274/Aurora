@@ -1,7 +1,7 @@
 package com.stsf.aurora.services;
 
 
-import com.stsf.aurora.requestmodel.Domain;
+
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -18,7 +18,7 @@ public class BlacklistService {
         try {
 
 
-            System.out.println("[DEBUG] Blacklist add request received");
+            //System.out.println("[DEBUG] Blacklist add request received");
             String command = "pihole -b " + domain;
 
             Process p = Runtime.getRuntime().exec(command);
@@ -31,7 +31,7 @@ public class BlacklistService {
 
                 if (line.toLowerCase(Locale.ROOT).contains("adding")) {
 
-                    System.out.println("[DEBUG] Added to blacklist successfully");
+                    //System.out.println("[DEBUG] Added to blacklist successfully");
                     return "Added to blacklist: " + domain;
 
                 } else if (line.toLowerCase(Locale.ROOT).contains("already exists")) {
@@ -62,7 +62,7 @@ public class BlacklistService {
         try {
 
 
-            System.out.println("[DEBUG] Blacklist remove request received");
+            //System.out.println("[DEBUG] Blacklist remove request received");
             String command = "pihole -b -d " + domain;
 
             Process p = Runtime.getRuntime().exec(command);
@@ -75,12 +75,12 @@ public class BlacklistService {
 
                 if (line.toLowerCase(Locale.ROOT).contains("removing")) {
 
-                    System.out.println("[DEBUG] Removed from blacklist successfully");
+                    //System.out.println("[DEBUG] Removed from blacklist successfully");
                     return "Removed from blacklist";
 
                 } else if (line.toLowerCase(Locale.ROOT).contains("does not exists")) {
 
-                    System.out.println("[DEBUG] Blacklist doesn't contain domain: " + domain);
+                    //System.out.println("[DEBUG] Blacklist doesn't contain domain: " + domain);
                     return "Blacklist doesn't contain domain: " + domain;
 
                 }

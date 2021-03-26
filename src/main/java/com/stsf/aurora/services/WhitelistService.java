@@ -16,7 +16,7 @@ public class WhitelistService {
         try {
 
 
-            System.out.println("[DEBUG] Whitelist add request received");
+            //System.out.println("[DEBUG] Whitelist add request received");
             String command = "pihole -w " + domain;
 
             Process p = Runtime.getRuntime().exec(command);
@@ -29,12 +29,12 @@ public class WhitelistService {
 
                 if (line.toLowerCase(Locale.ROOT).contains("adding")) {
 
-                    System.out.println("[DEBUG] Added to whitelist successfully");
+                    //System.out.println("[DEBUG] Added to whitelist successfully");
                     return"Added to whitelist: " + domain;
 
                 } else if (line.toLowerCase(Locale.ROOT).contains("already exists")) {
 
-                    System.out.println("[DEBUG] Whitelist already contains domain: " + domain);
+                    //System.out.println("[DEBUG] Whitelist already contains domain: " + domain);
                     return "[DEBUG] Whitelist already contains domain: " + domain;
 
                 }
@@ -60,7 +60,7 @@ public class WhitelistService {
         try {
 
 
-            System.out.println("[DEBUG] Whitelist remove request received");
+            //System.out.println("[DEBUG] Whitelist remove request received");
             String command = "pihole -w -d " + domain;
 
             Process p = Runtime.getRuntime().exec(command);
@@ -73,12 +73,12 @@ public class WhitelistService {
 
                 if (line.toLowerCase(Locale.ROOT).contains("removing")) {
 
-                    System.out.println("[DEBUG] Removed from whitelist successfully");
+                    //System.out.println("[DEBUG] Removed from whitelist successfully");
                     return "Removed from whitelist";
 
                 } else if (line.toLowerCase(Locale.ROOT).contains("does not exists")) {
 
-                    System.out.println("[DEBUG] Whitelist doesn't contain domain: " + domain);
+                    //System.out.println("[DEBUG] Whitelist doesn't contain domain: " + domain);
                     return "Whitelist doesn't contain domain: " + domain;
 
                 }
