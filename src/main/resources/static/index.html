@@ -4,29 +4,32 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon.ico" type="image/icon type">
         <title>Aurora Documentation</title>
         <script src="script.js"></script>
-        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <noscript>You need to eneable JavaScript in your browser</noscript><!-- if you cant run js this will appear -->
-        
+        <noscript>This site isn't working without JavaScript :(</noscript><!-- if you cant run js this will appear -->
 
         <div class="header">
             <div class="center-text-div">
-                <h1 class="header-title center-text">Aurora Documentation</h1>
+                <h1 class="header-title center-text" id="header-title"></h1>
             </div>
             <div class="center-text-div">
-                <p class="header-text center-text">This documentation will show you how to use Aurora and it's browser extension</p>
+                <p class="header-text center-text" id="header-text"></p>
             </div>
         </div>
 
         <div class="content">
             <div id="questions"></div>
+            <p class="content-text" id="content-text"></p>
         </div>
 
         <div class="footer">
-            <p class="footer-copyright-text">Copyright ©</p>
+            <div class="footer-copyright-div">
+                <p class="footer-copyright-text" id="copyright-text"></p>
+            </div>
         </div>
     </body>
 </html>

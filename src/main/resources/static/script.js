@@ -6,7 +6,7 @@ function readTextFile(file) {
     rawFile.onreadystatechange = () => {
         if(rawFile.readyState === 4) {
             if(rawFile.status === 200 || rawFile.status == 0) {
-                text = JSON.parse(rawFile.responseText);
+                text = rawFile.responseText;
             }
         }
     }
@@ -17,9 +17,8 @@ function readTextFile(file) {
     return text;
 }
 
-const onload = () => {
+const loadQuestions = (questions) => {
     const questions_div = document.getElementById("questions");
-    const questions = readTextFile("questions.json");
 
     for (const question of questions) {
         const q = document.createElement("p");
@@ -35,6 +34,23 @@ const onload = () => {
 
         questions_div.appendChild(d);
     }
+}
+
+const loadText = () => {
+    const data = JSON.parse(readTextFile("data.json"));
+
+    for (const d of data) {
+        if (d.id == "questions") {
+            loadQuestions(d.questions);
+        }
+        else {
+            document.getElementById(d.id).innerHTML = d.text;
+        }
+    }
+}
+
+const onload = () => {
+    loadText();
 }
 
 window.onload = () => {

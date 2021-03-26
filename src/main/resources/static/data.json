@@ -1,0 +1,35 @@
+[
+    {
+        "id": "header-title",
+        "text": "Aurora Documentation"
+    },
+    {
+        "id": "header-text",
+        "text": "This documentation will show you how to use Aurora and it's browser extension"
+    },
+    {
+        "id": "questions",
+        "questions": [
+            {
+                "question": "What is Aurora?",
+                "answer": "Aurora is an API created in Java to control your PiHole"
+            },
+            {
+                "question": "Why to choose Aurora?",
+                "answer": "Because Aurora is very reliable and secure, since it is written i Java and uses Spring to create mappings, and Spring Security so secure all the requests "
+            },
+            {
+                "question": "Is Aurora safe?",
+                "answer": "Yes aurora is safe since it uses Spring Security and every request has to authenticated. Although i don't recomend it, it is possible to open the port to the internet if you use PiHole as a remote DNS servers"
+            }
+        ]
+    },
+    {
+        "id": "copyright-text",
+        "text": "Copyright ©"
+    },
+    {
+        "id": "content-text",
+        "text": ""
+    }
+]
