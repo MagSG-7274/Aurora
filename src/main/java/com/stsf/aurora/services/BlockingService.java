@@ -85,7 +85,7 @@ public class BlockingService {
 
         try {
 
-            System.out.println("[DEBUG] Blocking Check Request Received");
+            //System.out.println("[DEBUG] Blocking Check Request Received");
             String command = "pihole status";
             Process p = Runtime.getRuntime().exec(command);
 
