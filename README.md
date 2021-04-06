@@ -9,10 +9,13 @@
 
 Prerequisites: <br>
  - Java JRE 15 (or later) <br>
- -  PiHole
+ -  PiHole <br>
+ -  Git (and GitHub account)
 ### Installing with convenience script
-- Go [here](https://github.com/MagSG-7274/Aurora/releases) and download it. You will need to grant this script execution privileges which you can do with `sudo chmod +x Install.sh`. 
-- Then just execute the script. `./Install.sh`
+- Go [here](https://github.com/MagSG-7274/Aurora/releases) and download it. You will need to grant this script execution privileges which you can do with `sudo chmod +x aurora.sh`. 
+- Then just execute the script. `./aurora.sh`
+- [NOTE] You will have to run this script with sudo
+- [NOTE] Please run this every time you see a new commit on github
 ### Downloading precompiled binaries package
 - You can run Aurora without any installation just by downloading the precompiled .jar package from [here](https://github.com/MagSG-7274/Aurora/releases) 
 - After downloading you will just need to run the package using command: `java -jar precompiledAuroraBinary.jar`
