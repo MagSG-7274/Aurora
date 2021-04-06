@@ -72,13 +72,17 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         int leftLimit = 97; // a
         int rightLimit = 122; // z
-        int targetPasswordLenght = 10;
+        int targetPasswordLength = 10;
         Random random = new Random();
 
         return random.ints(leftLimit, rightLimit + 1)
-                .limit(targetPasswordLenght)
+                .limit(targetPasswordLength)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
+    }
+
+    private void removeOldPasswordFile() {
+        
     }
 }
 

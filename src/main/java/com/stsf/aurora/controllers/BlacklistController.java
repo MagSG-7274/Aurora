@@ -23,9 +23,9 @@ public class BlacklistController {
     }
 
     @GetMapping("/exists")
-    public GenericResponse<Boolean> getIfDomainAlreadyInBlacklist(@RequestParam String domain) {
+    public GenericResponse<Boolean> getIfDomainAlreadyInBlacklist(@RequestBody Domain domain) {
 
-        boolean isInBlacklist = blacklistService.getIfDomainAlreadyInBlacklistService(domain);
+        boolean isInBlacklist = blacklistService.getIfDomainAlreadyInBlacklistService(domain.getDomain());
         return new GenericResponse<>(isInBlacklist);
 
     }
