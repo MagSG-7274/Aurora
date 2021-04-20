@@ -12,17 +12,17 @@ public class WhitelistController {
     private final WhitelistService whitelistService = new WhitelistService();
 
     @PostMapping("/add")
-    public GenericResponse<String> addWhitelist(@RequestBody String domain) {
+    public GenericResponse<String> addWhitelist(@RequestBody Domain domain) {
         return new GenericResponse<>(whitelistService.addWhitelistService(domain));
     }
 
     @PostMapping("/rem")
-    public GenericResponse<String> removeWhitelist(@RequestBody String domain) {
+    public GenericResponse<String> removeWhitelist(@RequestBody Domain domain) {
         return new GenericResponse<>(whitelistService.removeWhitelistService(domain));
     }
 
     @GetMapping("/exists")
-    public GenericResponse<Boolean> getIfDomainAlreadyInWhitelist(@RequestParam String domain) {
+    public GenericResponse<Boolean> getIfDomainAlreadyInWhitelist(@RequestBody Domain domain) {
 
         boolean isInWhitelist = whitelistService.getIfDomainAlreadyInWhitelistService(domain);
         return new GenericResponse<>(isInWhitelist);

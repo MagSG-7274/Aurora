@@ -11,13 +11,13 @@ import java.util.Locale;
 @Service
 public class WhitelistService {
 
-    public String addWhitelistService(String domain) {
+    public String addWhitelistService(Domain domain) {
 
         try {
 
 
             //System.out.println("[DEBUG] Whitelist add request received");
-            String command = "pihole -w " + domain;
+            String command = "pihole -w " + domain.getDomain();
 
             Process p = Runtime.getRuntime().exec(command);
 
@@ -51,18 +51,18 @@ public class WhitelistService {
             return "Unable to add domain to whitelist";
         }
 
-        System.out.println("WHAT THE FUCK");
+
         return "Unable to add domain to whitelist";
 
     }
 
-    public String removeWhitelistService(String domain) {
+    public String removeWhitelistService(Domain domain) {
 
         try {
 
 
             //System.out.println("[DEBUG] Whitelist remove request received");
-            String command = "pihole -w -d " + domain;
+            String command = "pihole -w -d " + domain.getDomain();
 
             Process p = Runtime.getRuntime().exec(command);
 
@@ -100,7 +100,7 @@ public class WhitelistService {
 
     }
 
-    public Boolean getIfDomainAlreadyInWhitelistService(String domain) {
+    public Boolean getIfDomainAlreadyInWhitelistService(Domain domain) {
 
         String output = addWhitelistService(domain);
 
