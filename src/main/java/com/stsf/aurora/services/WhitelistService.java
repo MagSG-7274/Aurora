@@ -35,7 +35,7 @@ public class WhitelistService {
                 } else if (line.toLowerCase(Locale.ROOT).contains("already exists")) {
 
                     //System.out.println("[DEBUG] Whitelist already contains domain: " + domain);
-                    return "[DEBUG] Whitelist already contains domain: " + domain;
+                    return "Whitelist already contains domain: " + domain;
 
                 }
 
@@ -51,6 +51,7 @@ public class WhitelistService {
             return "Unable to add domain to whitelist";
         }
 
+        System.out.println("WHAT THE FUCK");
         return "Unable to add domain to whitelist";
 
     }
