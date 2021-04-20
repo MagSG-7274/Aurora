@@ -37,7 +37,7 @@ public class BlacklistService {
                 } else if (line.toLowerCase(Locale.ROOT).contains("already exists")) {
 
                     System.out.println("[DEBUG] Blacklist already contains domain: " + domain);
-                    return "[DEBUG] Blacklist already contains domain: " + domain;
+                    return "Blacklist already contains domain: " + domain;
 
                 }
 

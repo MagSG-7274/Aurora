@@ -13,22 +13,17 @@ public class BlockingController {
 
     private final BlockingService blockingService = new BlockingService();
 
-    @GetMapping(path = "/disable")
+    @PostMapping(path = "/disable")
     public GenericResponse<String> disableBlocking() {
 
         return blockingService.disableBlocking();
 
     }
 
-
-
-    @GetMapping("/enable")
+    @PostMapping("/enable")
     public GenericResponse<String> enableBlocking() {
-
         return blockingService.enableBlockingService();
-
     }
-
 
 
     @GetMapping("/active")
