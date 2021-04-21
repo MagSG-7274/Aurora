@@ -1,6 +1,10 @@
 package com.stsf.aurora.security;
 
 
+import com.stsf.aurora.AuroraApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +17,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 
 @Configuration
@@ -20,7 +29,7 @@ import java.util.Random;
 public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private String PASSWORD;
-    private String USERNAME = "storm";
+    private String USERNAME;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -44,16 +53,8 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     protected UserDetailsService userDetailsService() {
 
-        this.PASSWORD = generatePassword();
+         this.getUserCredentials();
 
-        System.out.println("\n\n\n!!!!!!!!\nGENERATING NEW CREDENTIALS");
-        System.out.printf("USERNAME - [%s] :: PASSWORD - [%s]\n", this.USERNAME, this.PASSWORD);
-        System.out.println("!!!!!!!!");
-        System.out.println("[NOTE] The credentials will expire upon restarting Aurora\n\n\n\n");
-
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException ignored){}
 
         UserDetails auroraUser = User.builder()
                 .username(this.USERNAME)
@@ -81,8 +82,37 @@ public class AuroraSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .toString();
     }
 
-    private void removeOldPasswordFile() {
-        
+    private void getUserCredentials() {
+
+        File f = new File(AuroraApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        // Maybe there is a better way of doing this
+        String location = f.toString().split("build")[0];
+        location += "config.json";
+
+        try {
+
+            String content = new String(Files.readAllBytes(Paths.get(location)));
+            JSONObject configJson = new JSONObject(content);
+
+            String password = configJson.getString("password");
+            String username = configJson.getString("username");
+
+            this.PASSWORD = password;
+            this.USERNAME = username;
+
+        } catch (IOException | JSONException e) {
+
+            System.out.println("Couldn't find json or not all required fields are present, falling back to defaults");
+            this.PASSWORD = generatePassword();
+            this.USERNAME = "storm";
+
+            System.out.println("\n\n\n!!!!!!!!\nGENERATING NEW CREDENTIALS");
+            System.out.printf("USERNAME - [%s] :: PASSWORD - [%s]\n", this.USERNAME, this.PASSWORD);
+            System.out.println("!!!!!!!!");
+            System.out.println("[NOTE] The credentials will expire upon restarting Aurora\n\n\n\n");
+
+        }
+
     }
 }
 
